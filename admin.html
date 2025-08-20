@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onlinetraderz – Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      if (window.emailjs && emailjs.init) {
+        emailjs.init("PUBLIC_KEY"); // TODO: replace
+      }
+    })();
+  </script>
+</head>
+<body class="theme-light">
+
+  <!-- 🔒 Protect page with session -->
+  <script>
+    if (!sessionStorage.getItem("adminAuth")) {
+      alert("Unauthorized! Unlock from Shop first.");
+      window.location.href = "index.html";
+    }
+  </script>
+
+  <header class="container header">
+    <div class="branding"><h1>Admin • Onlinetraderz</h1></div>
+    <nav class="actions">
+      <a class="btn ghost" href="index.html">← Back to Shop</a>
+      <button id="themeToggle" class="btn">Switch Theme</button>
+    </nav>
+  </header>
+
+  <main class="container admin">
+
+    <section class="card" id="adminPanel">
+      <h2>Dashboard</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="productsTab">Products</button>
+        <button class="tab" data-tab="ordersTab">Orders</button>
+        <button class="tab" data-tab="addressesTab">Address Book</button>
+        <button class="tab" data-tab="settingsTab">Settings</button>
+      </div>
+
+      <div id="productsTab" class="tab-pane">
+        <h3>Manage Products</h3>
+        <form id="productForm" class="form">
+          <input type="hidden" id="prodId" />
+          <div class="row"><label>Name</label><input id="prodName" class="input" required /></div>
+          <div class="row"><label>Price (PKR)</label><input id="prodPrice" class="input" type="number" min="0" required /></div>
+          <div class="row">
+            <label>Image URL or Upload</label>
+            <input id="prodImg" class="input" placeholder="https://..." />
+            <input id="prodFile" type="file" accept="image/*" />
+          </div>
+          <div class="row"><label>Description</label><textarea id="prodDesc" class="input" rows="2"></textarea></div>
+          <div class="row">
+            <button class="btn primary" type="submit">Save Product</button>
+            <button id="resetProduct" class="btn ghost" type="button">Reset</button>
+          </div>
+        </form>
+        <div id="productList" class="list"></div>
+        <div class="row gap">
+          <button id="exportProducts" class="btn">Export JSON</button>
+          <label class="btn file">
+            Import JSON
+            <input id="importProducts" type="file" accept="application/json" hidden />
+          </label>
+        </div>
+      </div>
+
+      <div id="ordersTab" class="tab-pane hidden">
+        <h3>Orders</h3>
+        <div id="ordersList" class="list"></div>
+      </div>
+
+      <div id="addressesTab" class="tab-pane hidden">
+        <h3>Address Book</h3>
+        <div id="addressList" class="list"></div>
+      </div>
+
+      <div id="settingsTab" class="tab-pane hidden">
+        <h3>Settings</h3>
+        <div class="row"><label>Admin notification email</label><input id="adminEmail" class="input" type="email" value="farisdaar107@gmail.com" /></div>
+        <div class="row"><label>WhatsApp number</label><input id="waNumber" class="input" value="03444318078" /></div>
+        <p class="muted small">Emails are sent using EmailJS from the client. Replace IDs in <code>admin.js</code>.</p>
+      </div>
+
+      <div class="row"><button id="logoutBtn" class="btn ghost">Logout</button></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p class="muted small">© <span id="year"></span> Onlinetraderz • Admin</p>
+  </footer>
+
+  <script src="admin.js"></script>
+  <script>
+    // logout functionality
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      sessionStorage.removeItem("adminAuth");
+      alert("Logged out!");
+      window.location.href = "index.html";
+    });
+
+    // year update
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

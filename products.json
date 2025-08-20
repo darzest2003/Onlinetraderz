@@ -1,0 +1,58 @@
+[
+  {
+    "id": "P-1001",
+    "name": "Wireless Earbuds",
+    "price": 3999,
+    "image": "https://images.unsplash.com/photo-1585386959984-a41552231665?q=80&w=1200&auto=format&fit=crop",
+    "description": "Bluetooth 5.3, 24h battery, noise reduction."
+  },
+  {
+    "id": "P-1002",
+    "name": "Smart Watch",
+    "price": 6499,
+    "image": "https://images.unsplash.com/photo-1518441902110-875c9a3ad133?q=80&w=1200&auto=format&fit=crop",
+    "description": "Heart rate, sleep tracking, waterproof."
+  },
+  {
+    "id": "P-1003",
+    "name": "Power Bank 20,000mAh",
+    "price": 2999,
+    "image": "https://images.unsplash.com/photo-1526401485004-2fda9f4f0c34?q=80&w=1200&auto=format&fit=crop",
+    "description": "Fast charging USB-C + USB-A ports."
+  },
+  {
+    "id": "P-1004",
+    "name": "Gaming Mouse",
+    "price": 2199,
+    "image": "https://images.unsplash.com/photo-1585079542156-2755d9c8aff1?q=80&w=1200&auto=format&fit=crop",
+    "description": "RGB, 7 buttons, 12,000 DPI."
+  },
+  {
+    "id": "P-1005",
+    "name": "Mechanical Keyboard",
+    "price": 7499,
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop",
+    "description": "Blue switches, full-size, backlit."
+  },
+  {
+    "id": "P-1006",
+    "name": "USB-C Cable (2m)",
+    "price": 799,
+    "image": "https://images.unsplash.com/photo-1600861194942-f883de0dfe96?q=80&w=1200&auto=format&fit=crop",
+    "description": "Durable braided, 60W fast charge."
+  },
+  {
+    "id": "P-1007",
+    "name": "Portable Speaker",
+    "price": 5599,
+    "image": "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=1200&auto=format&fit=crop",
+    "description": "Water-resistant, rich bass, 12h playtime."
+  },
+  {
+    "id": "P-1008",
+    "name": "Webcam 1080p",
+    "price": 4299,
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop",
+    "description": "Auto-focus, dual mics, privacy cover."
+  }
+]

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onlinetraderz – Shop</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      if (window.emailjs && emailjs.init) {
+        emailjs.init("PUBLIC_KEY"); // TODO: replace
+      }
+    })();
+  </script>
+</head>
+<body class="theme-light">
+  <header class="container header">
+    <div class="branding">
+      <h1 id="shopLogo">Onlinetraderz</h1>
+      <span class="tag">Light • Dark • Blue</span>
+    </div>
+
+    <nav class="actions">
+      <button id="themeToggle" class="btn">Switch Theme</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="toolbar">
+      <div class="search-wrap">
+        <input id="searchInput" class="input" type="search" placeholder="Search products..." />
+      </div>
+      <div class="pager-info">
+        <span id="pagerText">Page 1</span>
+      </div>
+    </section>
+
+    <section id="productGrid" class="grid-2x"></section>
+
+    <section class="pager">
+      <button id="prevBtn" class="btn" disabled>Prev</button>
+      <button id="nextBtn" class="btn">Next</button>
+    </section>
+
+    <section id="orderSection" class="card hidden">
+      <h2>Place Order</h2>
+      <form id="orderForm" class="form">
+        <div class="row">
+          <label>Product</label>
+          <input id="orderProduct" name="product" class="input" type="text" readonly required />
+        </div>
+        <div class="row">
+          <label>Your Name</label>
+          <input id="orderName" name="name" class="input" type="text" required />
+        </div>
+        <div class="row">
+          <label>Phone</label>
+          <input id="orderPhone" name="phone" class="input" type="tel" required />
+        </div>
+        <div class="row">
+          <label>Email</label>
+          <input id="orderEmail" name="email" class="input" type="email" required />
+        </div>
+        <div class="row">
+          <label>Address</label>
+          <textarea id="orderAddress" name="address" class="input" rows="3" required></textarea>
+        </div>
+        <div class="row">
+          <label>Notes (optional)</label>
+          <textarea id="orderNotes" name="notes" class="input" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <button class="btn primary" type="submit">Submit Order</button>
+          <button id="cancelOrder" class="btn ghost" type="button">Cancel</button>
+        </div>
+        <p class="muted">You’ll receive a confirmation email. We’ll notify you when your order ships.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div class="contact">
+      <a class="wa-link" href="https://wa.me/923444318078" target="_blank" rel="noopener">
+        <span class="wa-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M19.11 17.27c-.28-.14-1.64-.81-1.9-.9-.26-.1-.45-.14-.64.14-.19.28-.74.9-.9 1.08-.17.19-.33.21-.61.07-.28-.14-1.19-.44-2.26-1.41-.84-.75-1.41-1.68-1.58-1.96-.17-.28-.02-.43.12-.57.12-.12.28-.33.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.88-2.11-.23-.56-.47-.48-.64-.49-.16-.01-.35-.01-.54-.01-.19 0-.49.07-.75.35-.26.28-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .14.19 2.01 3.07 4.86 4.3.68.29 1.21.46 1.63.59.69.22 1.31.19 1.8.12.55-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.26-.19-.54-.33z"/>
+            <path d="M26.7 5.31C24.2 2.81 21.02 1.5 17.62 1.5 9.89 1.5 3.62 7.77 3.62 15.5c0 2.46.64 4.87 1.87 6.98L3.5 30.5l8.2-2.13c2.05 1.12 4.37 1.7 6.73 1.7 7.73 0 14-6.27 14-14 0-3.4-1.31-6.58-3.73-9.06zM18.43 27.07c-2.17 0-4.29-.58-6.14-1.67l-.44-.26-4.86 1.26 1.3-4.73-.29-.49c-1.16-1.9-1.78-4.09-1.78-6.31 0-6.72 5.47-12.18 12.18-12.18 3.25 0 6.3 1.26 8.59 3.55 2.29 2.29 3.55 5.33 3.55 8.59 0 6.72-5.47 12.18-12.18 12.18z"/>
+          </svg>
+        </span>
+        <span>WhatsApp: 03444318078</span>
+      </a>
+    </div>
+    <p class="muted small">© <span id="year"></span> Onlinetraderz • Need help? Chat on WhatsApp.</p>
+  </footer>
+
+  <!-- 🔒 Secret Admin Unlock Script -->
+  <script>
+    const correctPassword = "mySecret123"; // change this
+    let tapCount = 0;
+    const logo = document.getElementById("shopLogo");
+    let resetTimer;
+
+    logo.addEventListener("click", () => {
+      tapCount++;
+      clearTimeout(resetTimer);
+      // Faster reset: 1 second instead of 2
+      resetTimer = setTimeout(() => { tapCount = 0; }, 1000);
+
+      if (tapCount === 5) {
+        const pass = prompt("Enter Admin Password:");
+        if (pass === correctPassword) {
+          sessionStorage.setItem("adminAuth", "true");
+          window.location.href = "admin.html";
+        } else {
+          alert("Wrong password!");
+        }
+        tapCount = 0;
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
